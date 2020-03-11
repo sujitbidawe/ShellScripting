@@ -1,0 +1,33 @@
+admin1@admin1-LIVA-Z2V:~/Desktop/linuxCommands/linux-content$ cat data.csv | awk '$4 > 10000 {print $2,$7}' | column -t
+EmployeeName  TotalPay
+NATHANIEL     567595
+GARY          538909
+ALBERT        335279
+CHRISTOPHER   332343
+PATRICK       326373
+DAVID         316285
+ALSON         315981
+DAVID         307899
+JOANNE        302377
+PATRICIA      297608
+EDWARD        294580
+admin1@admin1-LIVA-Z2V:~/Desktop/linuxCommands/linux-content$ cat data.csv | grep CAPTAIN 
+2  GARY         CAPTAIN         155966  245131      137811   538909   538909
+3  ALBERT       CAPTAIN         212739  106088      16452    335279   335279
+12 PATRICIA     CAPTAIN         99722   87082       110804   297608   297608
+admin1@admin1-LIVA-Z2V:~/Desktop/linuxCommands/linux-content$ cat data.csv | awk '$3 ~ /CAPTAIN/ {sum+=$7} END {print sum}' 
+1171796
+admin1@admin1-LIVA-Z2V:~/Desktop/linuxCommands/linux-content$ cat data.csv | grep CAPTAIN | awk 'BEGIN {sum=0} {sum+=$7} END {print sum}'
+1171796
+admin1@admin1-LIVA-Z2V:~/Desktop/linuxCommands/linux-content$ 
+admin1@admin1-LIVA-Z2V:~/Desktop/linuxCommands/linux-content$ cat data.csv | awk '$5 >= 7000 && $5 <= 10000 {print $3,$5}' | column -t
+DEPUTYCHIEF  9737
+ASSTDEPUTY   8601
+admin1@admin1-LIVA-Z2V:~/Desktop/linuxCommands/linux-content$ cat data.csv | awk '  {sum+=$4}  END {print sum/NR}' 
+157972
+admin1@admin1-LIVA-Z2V:~/Desktop/linuxCommands/linux-content$ grep -E "http://|https://" access.log | awk '{print $1}' | sort -n | uniq -c | sort -nr | head -n 4
+    351 10.56.2.2
+    322 10.56.19.3
+    297 10.56.21.2
+    258 10.56.1.3
+

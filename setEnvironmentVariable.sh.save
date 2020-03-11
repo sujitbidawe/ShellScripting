@@ -1,0 +1,13 @@
+#! /bin/bash -x
+
+#USERSECRET=dH34xJaa23;
+#value=`env | grep USERSECRET | grep dH34xJaa23`;
+echo $value;
+
+if [ -z "$(env | grep dH34xJaa23)" ]
+then
+	`export USERSECRET=dH34xJaa23`;
+else
+	echo "already exist"
+#	export USERSECRET=dH3
+fi
